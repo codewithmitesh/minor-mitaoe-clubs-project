@@ -1,0 +1,49 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title MITAOE | Club Page
+        style 
+            include ./../../public/css/club.css
+            include ./../../public/util.css
+    body 
+        header.header 
+            img(src="Logo.png", alt="Logo" class="logo")
+            nav 
+                ul 
+                    li 
+                        a(href="/clubs") Home 
+                    li
+                        a(href="/clubs/my") My Clubs 
+            div.msg=`Welcome ${user.full_name}`
+            .dropdown 
+                div.account.drop-btn 
+                div.dropdown-content 
+                    a.dropdown-item(href="account") Account 
+                    a.dropdown-item(href="account/setting") Setting 
+                    a.dropdown-item(href="/logout") Logout 
+                    if user.role == "Teacher"
+                        a.dropdown-item(href="/admin") Administration 
+        section.head
+            h1 MITAOE Club Home Page
+        main 
+            .club-container 
+                if club.length != 0
+                    h1.no-club No clubs found
+                else 
+                    div.club-card 
+                        img.club-photo(src="https://mitaoe.ac.in/assets/images/campus8.jpg")
+                        div.club-content
+                            div.club-name Mozilla Club 
+                            div.club-desc description 
+                            div.info 
+                                div.member 37 member
+                                div.next-event 23/03/2022
+                        a(class="btn btn-join")
+                            | Join
+                
+
+        footer.footer
+            h3 Copyright &copy; MITAOE

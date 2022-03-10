@@ -1,0 +1,159 @@
+*{
+    margin: 0;padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+.header{
+    height: 70px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+    border-bottom: 1px solid black;
+    box-shadow: 0px 2px 15px black;
+}
+main{
+    height: 600px;
+}
+nav{
+    padding: 0 50px;
+    margin-left: auto;
+}
+nav ul{
+    display: flex;
+    list-style: none;
+}
+nav ul li{
+    /* padding: 0 20px; */
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: .1px;
+    color: blue;
+}
+nav ul li a{
+    color: blue;
+    padding: 5px 20px;
+    border-radius: 40px;
+    transition: all .25s ease-in-out;
+}
+nav ul li a:hover{
+    text-decoration:wavy;
+    background-color: blue;
+    color: white;
+}
+.logo{
+    height: 90%;
+}
+.account{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background: url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png');
+    background-size: cover;
+}
+.dropdown{
+    position: relative;
+    cursor: pointer;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    right: 5px;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown:hover .dropdown-content{
+    display: inline-flex;
+    flex-direction: column;
+}
+.dropdown-item{
+    padding: 7px 9px;
+    text-align:center;margin: 0;
+}
+.dropdown-item:hover{
+    background-color: aqua;
+
+}
+
+
+
+.msg{
+    margin-left: auto;
+    padding: 0 20px;
+    font-size: 1.1rem;
+}
+
+.head{
+    height: 200px;
+    background-color: black;
+    color: white;
+    display: flex;
+    font-size: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.club-container{
+    border: 2px solid black;
+    border-radius: 10px;
+    display:flex;
+    flex-wrap: wrap;
+    margin: 14px 20px;
+    padding: 35px 30px;
+    text-align: center;
+    min-height: 400px;
+}
+.no-club{
+    margin: auto;
+    color: red;
+    font-size: 3.3rem;
+}
+/* club cards*/
+
+
+.club-card{
+    min-width: 250px;
+    display: flex;
+    border: 0px solid black;
+    border-radius: 15px;
+    box-shadow: 3px 3px 14px rgb(177 251 255);
+    flex-direction: column;
+    /* background-color: yellow; */
+    height: fit-content;
+}
+.club-photo{
+    height:150px;
+    border-radius: 15px 15px 0 0;
+}
+.club-name{
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 15px 0;
+}
+.club-desc{
+    font-style: italic;
+    text-align: center;
+    padding: 13px 15px;
+}
+.info{
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 15px;
+}
+.club-card a{
+    margin:23px auto;
+}
+
+.footer{
+    display: flex;
+    height: 100px;
+    background-color: black;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
