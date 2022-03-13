@@ -1,52 +1,56 @@
 const mongoose = require('mongoose')
 
 const clubSchema = new mongoose.Schema({
-    club_name:{
-        type:String,
-        required:[true,"Please provide Club name"]
+    club_name: {
+        type: String,
+        required: [true, "Please provide Club name"]
     },
-    about:{
-        type:String,
+    about: {
+        type: String,
     },
-    createdAt:{
-        type:Date,
-        default:Date.now()
+    createdAt: {
+        type: Date,
+        default: Date.now()
     },
-    admin:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"User"
+    admin: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     },
-    events:[
+    events: [
         {
-            type:mongoose.Schema.Types.ObjectId,
-            ref:"Event"
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Event"
         }
     ],
-    Teams:[
+    members: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }],
+    Teams: [
         {
-            type:mongoose.Schema.Types.ObjectId,
-            ref:"Team"
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Team"
         }
     ],
-    location:{
-        type:String,
-        required:[true,"Please provide club location"]
+    location: {
+        type: String,
+        required: [true, "Please provide club location"]
     },
-    instagram_url:{
-        type:String
+    instagram_url: {
+        type: String
     }
-    ,facebook_url:{
-        type:String
+    , facebook_url: {
+        type: String
     },
-    linkedin_url:{
-        type:String
+    linkedin_url: {
+        type: String
     },
-    tag:{
-        type:String,
-        enum:["Technical","Non Technical","Cultural","Sports"]
+    tag: {
+        type: String,
+        enum: ["Technical", "Non Technical", "Cultural", "Sports"]
     }
 })
 
-const Club = mongoose.model('Club',clubSchema);
+const Club = mongoose.model('Club', clubSchema);
 
 module.exports = Club;

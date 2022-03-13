@@ -6,24 +6,40 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title MITAOE | Club Page
         style 
-            include ./../../public/css/landing.css
+            include ./../../public/css/club.css
             include ./../../public/util.css
+            include ./../../public/css/header.css
     body 
         header.header 
-            img(src="Logo.png", alt="Logo" class="logo")
-        if success == false 
-            div.err-msg#dismiss= `Something went Wrong! ${message}`
-                button(onclick=`document.getElementById('dismiss').style.display = 'none'`) ❌
+            img(src="../Logo.png", alt="Logo" class="logo")
+            nav 
+                ul 
+                    li 
+                        a(href="/clubs") Home 
+                    li
+                        a(href="/clubs/my") My Clubs 
+                    if user.role == "Teacher" 
+                        li
+                            a(href="/admin/new") Create Club 
+            div.msg=`Welcome ${user.full_name}`
+            .dropdown 
+                div.account.drop-btn 
+                div.dropdown-content 
+                    a.dropdown-item(href="account") Account 
+                    a.dropdown-item(href="account/setting") Setting 
+                    a.dropdown-item(href="/logout") Logout 
+                    if user.role == "Teacher"
+                        a.dropdown-item(href="/admin") Administration 
+        section.head
+            h1 Account
         main 
-            .container
-                .welcome Welcome to MITAOE Club Page
-                .home1
-                    .form-box 
-                        h3.form-heading Sign Up
-                        form(action="/signup" method="POST")
-                            div.input-box
+            .container 
+                .form-box 
+                    .form-heading Your Account
+                    form(action="/users/account" method="POST")
+                            .input-box 
                                 label(for="full_name")
-                                input(type="text" name="full_name" placeholder="Enter your full name" required value=`${user.full_name}`) 
+                                input(type="text" name="full_name" value=`${user.full_name}`) 
                             div.input-box
                                 label(for="email")
                                 input(type="email" name="email" placeholder="Enter your college email" required value=`${user.email}`) 
@@ -52,12 +68,25 @@ html(lang="en")
                                     option(value="Civil Department") Civil Department   
                                     option(value="Chemical Department") Chemical Department   
                             div.input-box
-                                label(for="password")
-                                input(type="password" name="password" placeholder="Enter your password" required) 
+                                label(for="about") Bio
+                                textarea(type="text" name="about" required value=`${user.about}`)= user.about 
                             div.input-box
-                                button(type="submit" class="btn btn-signup") Sign Up
+                                label(for="instagram_url")
+                                input(type="text" name="instagram_url" required value=`${user.instagram_url}` placeholder="Instagram Url") 
                             div.input-box
-                                a(href="/login") Already have an account? Login here 
+                                label(for="facebook_url")
+                                input(type="text" name="facebook_url" required value=`${user.facebook_url}` placeholder="Facebook Url") 
+                            div.input-box
+                                label(for="linkedin_url")
+                                input(type="text" name="linkedin_url" required value=`${user.linkedin_url}` placeholder="LinkedIn Url") 
+                            div.input-box
+                                label(for="twitter_url")
+                                input(type="text" name="twitter_url" required value=`${user.twitter_url}` placeholder="Twitter Url") 
+                            
+                            div.input-box
+                                button(type="submit" class="btn btn-signup") Update Profile
+                            div.input-box 
+           
                 
 
         footer.footer

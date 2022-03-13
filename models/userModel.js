@@ -20,7 +20,8 @@ const userSchema = new mongoose.Schema({
     mobile_number:{
         type:Number,
         required:[true,"Please provide mobile number"],
-        unique:true
+        unique:true,
+        minlength:[10,"Mobile number should be of 10 digits"]
     },
     prn:{
         type:String,
@@ -45,6 +46,7 @@ const userSchema = new mongoose.Schema({
     password:{
         type:String,
         select:false,
+        minlength:[8,"Password should be greater than 8 character"],
         required:[true,"Please provid your password"]
     },
     createdAt:{
@@ -63,27 +65,29 @@ const userSchema = new mongoose.Schema({
             ref:"Event"
         }
     ],
-    profileurl:{
-        type:String,
-        default:this.prn
-    },
     instagram_url:{
-        type:String
+        type:String,
+        default:""
     }
     ,facebook_url:{
-        type:String
+        type:String,
+        default:""
     },
     linkedin_url:{
-        type:String
+        type:String,
+        default:""
     },
     twitter_url:{
-        type:String
+        type:String,
+        default:""
     },
     about:{
-        type:String
+        type:String,
+        default:""
     },
     profil_pic:{
-        type:String
+        type:String,
+        default:""
     }
 })
 

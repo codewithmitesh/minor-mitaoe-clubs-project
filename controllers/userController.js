@@ -19,14 +19,24 @@ exports.signup = async (req,res)=>{
             department:req.body.department,
             password:req.body.password 
         })
-        res.json({
-            success:true,
-            data:user
-        })
+        // res.json({
+        //     success:true,
+        //     data:user
+        // })
+        res.redirect("/login")
     }catch(err){ 
-        res.json({
+        res.render('landing/signup',{
             success:false,
-            message:err.message
+            message:err.message,
+            user:{
+                full_name:req.body.full_name,
+                email:req.body.email,
+                mobile_number:req.body.mobile_number,
+                prn:req.body.prn,
+                study_year:req.body.study_year,
+                department:req.body.department,
+                password:req.body.password 
+            }
         })
     }
 }
@@ -36,7 +46,7 @@ exports.login = async(req,res)=>{
         const {email,password} = req.body;
         const user = await User.findOne({email}).select("+password")
         if(!user){
-            return res.json({
+            return res.render('landing/login',{
                 success:false,
                 message:"User doesn't exist"
             })
@@ -44,7 +54,7 @@ exports.login = async(req,res)=>{
         isMatch = await user.matchPassword(password) 
 
         if(!isMatch){
-            return res.json({
+            return res.render('landing/login',{
                 success:false,
                 message:"Incorrect Passowrd"
             })

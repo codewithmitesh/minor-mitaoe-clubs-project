@@ -2,9 +2,11 @@ const express =require('express');
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser');
 const app = express();
+const auth = require('./middlewares/auth')
 const landingRouter = require('./routes/landingRoute')
 const clubRouter = require('./routes/clubRoute');
 const adminRouter = require('./routes/adminRoute')
+const profileRouter = require('./routes/profileRoute')
 
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -14,9 +16,10 @@ app.use(express.static('public'))
 app.use(cookieParser())
 
 app.use('/',landingRouter) 
-app.use('/clubs',clubRouter)
-app.use('/admin',adminRouter)
- 
+app.use('/clubs',auth.isAuthenticatd,clubRouter)
+app.use('/admin',auth.isAuthenticatd,auth.isFaculty,adminRouter)
+app.use('/users',auth.isAuthenticatd,profileRouter)
+
 app.get('*',(req,res)=>{
     res.send("404")
 })

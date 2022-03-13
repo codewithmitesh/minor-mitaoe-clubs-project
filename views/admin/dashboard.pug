@@ -8,6 +8,7 @@ html(lang="en")
         style 
             include ./../../public/css/club.css
             include ./../../public/util.css
+            include ./../../public/css/header.css
     body 
         header.header 
             img(src="Logo.png", alt="Logo" class="logo")
@@ -24,8 +25,8 @@ html(lang="en")
             .dropdown 
                 div.account.drop-btn 
                 div.dropdown-content 
-                    a.dropdown-item(href="account") Account 
-                    a.dropdown-item(href="account/setting") Setting 
+                    a.dropdown-item(href="users/account") Account 
+                    a.dropdown-item(href="users/account/setting") Setting 
                     a.dropdown-item(href="/logout") Logout 
                     if user.role == "Teacher"
                         a.dropdown-item(href="/admin") Administration 
@@ -57,8 +58,14 @@ html(lang="en")
                                 td= User.study_year 
                                 td= User.department
                                 td= User.role
-                                td= User.createdAt.toLocaleString()
-                                td Edit 
+                                td= User.createdAt.toLocaleString("en-IN")
+                                td  
+                                    form(action=`admin/${User._id}` method="POST")
+                                        button(type="submit" class="btn btn-edit") 
+                                            if User.role == "Student"
+                                                | Make Admin
+                                            else 
+                                                | Make Member  
                                 td Delete
                 h1 Clubs
                 div.club-table 
@@ -67,14 +74,14 @@ html(lang="en")
                             th Sr. No.
                             th Club Name
                             th Club Admin 
-                            th Edit 
+                            th Created At
                             th Delete
                         each Club,i in clubs
                             tr 
                                 td= i+1
                                 td= Club.club_name
                                 td= admins[i]
-                                td Edit 
+                                td= Club.createdAt.toLocaleString("en-IN")
                                 td Delete
 
                 

@@ -9,7 +9,11 @@ const router = express.Router()
 //         club:[]
 //     })
 // })
-router.get('/',auth.isAuthenticatd,clubController.index)
+router.get('/',clubController.index)
+router.get('/my',clubController.myClubs)
+
+router.get('/:id',clubController.getOneClub)
+
 
 /*
  

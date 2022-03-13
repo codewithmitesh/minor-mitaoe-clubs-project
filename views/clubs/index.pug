@@ -8,6 +8,7 @@ html(lang="en")
         style 
             include ./../../public/css/club.css
             include ./../../public/util.css
+            include ./../../public/css/header.css
     body 
         header.header 
             img(src="Logo.png", alt="Logo" class="logo")
@@ -24,8 +25,8 @@ html(lang="en")
             .dropdown 
                 div.account.drop-btn 
                 div.dropdown-content 
-                    a.dropdown-item(href="account") Account 
-                    a.dropdown-item(href="account/setting") Setting 
+                    a.dropdown-item(href="users/account") Account 
+                    a.dropdown-item(href="users/account/setting") Setting 
                     a.dropdown-item(href="/logout") Logout 
                     if user.role == "Teacher"
                         a.dropdown-item(href="/admin") Administration 
@@ -43,11 +44,10 @@ html(lang="en")
                                 div.club-name= club.club_name 
                                 div.club-desc= club.about 
                                 div.info 
-                                    div.member pp
-                                    div.next-event No events
-                                    div= club.tag
-                            a(class="btn btn-join")
-                                | Join
+                                    div.member= `${club.members.length} Members`
+                            div.tag= club.tag
+                            a(class="btn btn-join" href=`clubs/${club._id}`)
+                                | View
                 
 
         footer.footer

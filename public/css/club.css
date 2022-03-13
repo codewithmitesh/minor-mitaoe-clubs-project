@@ -1,89 +1,6 @@
-*{
-    margin: 0;padding: 0;
-    box-sizing: border-box;
-}
-a{
-    text-decoration: none;
-}
-.header{
-    height: 70px;
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-    align-items: center;
-    border-bottom: 1px solid black;
-    box-shadow: 0px 2px 15px black;
-}
-nav{
-    padding: 0 50px;
-    margin-left: auto;
-}
-nav ul{
-    display: flex;
-    list-style: none;
-}
-nav ul li{
-    /* padding: 0 20px; */
-    font-weight: bold;
-    font-size: 1.1rem;
-    letter-spacing: .1px;
-    color: blue;
-}
-nav ul li a{
-    color: blue;
-    padding: 5px 20px;
-    border-radius: 40px;
-    transition: all .25s ease-in-out;
-}
-nav ul li a:hover{
-    text-decoration:wavy;
-    background-color: blue;
-    color: white;
-}
-.logo{
-    height: 90%;
-}
-.account{
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    background: url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png');
-    background-size: cover;
-}
-.dropdown{
-    position: relative;
-    cursor: pointer;
-}
-.dropdown-content{
-    display: none;
-    position: absolute;
-    right: 5px;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-.dropdown:hover .dropdown-content{
-    display: inline-flex;
-    flex-direction: column;
-}
-.dropdown-item{
-    padding: 7px 9px;
-    text-align:center;margin: 0;
-}
-.dropdown-item:hover{
-    background-color: aqua;
-
-}
 
 
-
-.msg{
-    margin-left: auto;
-    padding: 0 20px;
-    font-size: 1.1rem;
-}
+/* head*/
 
 .head{
     height: 200px;
@@ -94,6 +11,8 @@ nav ul li a:hover{
     justify-content: center;
     align-items: center;
 }
+
+/*main clubs/index*/
 
 .club-container{
     border: 2px solid black;
@@ -114,8 +33,10 @@ nav ul li a:hover{
 
 
 .club-card{
-    min-width: 250px;
+    min-width: 280px;
+    max-width: 280px;
     display: flex;
+    position: relative;
     margin: 0 20px;
     border: 0px solid black;
     border-radius: 15px;
@@ -135,13 +56,33 @@ nav ul li a:hover{
 }
 .club-desc{
     font-style: italic;
-    text-align: center;
-    padding: 13px 15px;
+    text-align: justify;
+    padding: 13px 35px;
+    overflow: auto;
 }
 .info{
     display: flex;
     justify-content: space-between;
     padding: 3px 15px;
+    margin: 2px 5px;
+    position: relative;
+}
+.member,.tag{
+    background-color: greenyellow;
+    padding: 5px 16px;
+    margin-top: 12px;
+}
+.tag{
+    background-color: red;
+    color: white;
+    position: absolute;
+    right: -20px;
+    border: 2px solid white;
+    border-radius: 15px;
+    top: 0px;
+    transform: rotate(30deg);
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .club-card a{
     margin:23px auto;
@@ -184,12 +125,7 @@ table {
     font-family: 'Courier New', Courier, monospace;
 }
 
-.form-heading{
-    text-align: center;
-    margin: 30px 0;
-    font-size: 1.3rem;
-    font-weight: bold;
-}
+/* form css */
 .form-box{
     width: 500px;
     margin: 0px auto;
@@ -197,11 +133,20 @@ table {
     border-radius: 0 60px 0 60px;
     padding: 5px 30px;
 }
+.form-heading{
+    text-align: center;
+    margin: 30px 0;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
 .input-box{
     margin: 15px;
     display: flex;
     flex-direction: column;
-    
+    font-size: 1.1rem;
+}
+.input-box label{
+    padding: 5px 2px;
 }
 .input-box input,.input-box select{
     padding: 5px 7px;
@@ -216,13 +161,10 @@ textarea{
     padding: 5px 7px;
 }
 
-
-
-.footer{
-    display: flex;
-    height: 100px;
-    background-color: black;
-    color: white;
-    justify-content: center;
-    align-items: center;
+.container{
+    margin: 20px auto;
+    width: 90vw;
 }
+
+
+

@@ -11,6 +11,9 @@ html(lang="en")
     body 
         header.header 
             img(src="Logo.png", alt="Logo" class="logo")
+        if success == false     
+            div.err-msg#dismiss= `Something went wrong! ${message}`
+                button(onclick=`document.getElementById('dismiss').style.display = 'none'`) ❌
         main 
             .container
                 .welcome Welcome to MITAOE Club Page

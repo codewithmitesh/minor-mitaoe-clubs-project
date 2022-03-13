@@ -2,18 +2,30 @@ const express = require('express')
 const userController = require('../controllers/userController')
 const router = express.Router();
 
-router.get('/',(req,res)=>{
+router.get('/', (req, res) => {
     res.render('landing/index')
 })
-router.get('/signup',(req,res)=>{
-    res.render("landing/signup")
+router.get('/signup', (req, res) => {
+    res.render("landing/signup",{
+        success:true,
+        user:{
+            full_name:"",
+                email:"",
+                mobile_number:"",
+                prn:"",
+                study_year:"",
+                department:"",
+                password:""
+        }
+    })
 })
-router.get('/login',(req,res)=>{
-    res.render("landing/login")
+router.get('/login', (req, res) => {
+    res.render("landing/login", { success: true })
 })
 
-router.post('/signup',userController.signup)
-router.post('/login',userController.login)
-router.get('/logout',userController.logout)
+// auth routes
+router.post('/signup', userController.signup)
+router.post('/login', userController.login)
+router.get('/logout', userController.logout)
 
 module.exports = router;

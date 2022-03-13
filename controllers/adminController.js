@@ -1,7 +1,7 @@
 const User = require('../models/userModel');
 const Club = require('../models/clubModel');
 const res = require('express/lib/response');
-exports.adminDashboard = async(req,res)=>{
+exports.adminDashboard = async(req,res)=>{  // get
     let users = await User.find();
     let clubs = await Club.find();
     let admins = [];
@@ -19,7 +19,7 @@ exports.adminDashboard = async(req,res)=>{
     })
 }
 
-exports.createClubForm = async(req,res)=>{
+exports.createClubForm = async(req,res)=>{   // get
     const users = await User.find({role:"Student"});
     res.render('admin/createClub',{
         user:req.user,
@@ -27,7 +27,7 @@ exports.createClubForm = async(req,res)=>{
     })
 }
 
-exports.createClub = async (req,res)=>{
+exports.createClub = async (req,res)=>{  // post
     try{
         let club = await Club.create({
             club_name:req.body.club_name,
@@ -43,4 +43,13 @@ exports.createClub = async (req,res)=>{
             message:err.message
         })
     }
+}
+
+exports.makeAdmin = async (req,res)=>{
+    let user = await User.findById({_id:req.params.id})
+    if(user.role == "Student")
+        user = await User.updateOne({_id:req.params.id},{role:"Teacher"})
+    else    
+        user = await User.updateOne({_id:req.params.id},{role:"Student"})
+    res.redirect('/admin')
 }

@@ -3,6 +3,28 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/* dismiss button css*/
+.err-msg{
+  padding: 10px 40px;
+  background-color: red;
+  color: white;
+  position: relative;
+}
+.err-msg button{
+  background:white;
+  position: absolute;
+  padding: 2px;
+  border-radius: 50%;
+  border: none;
+  right: 20px;
+  color: white;
+  cursor: pointer;
+
+}
+
+
+/* Landing header*/
 .header{
     height: 70px;
     background-color: greenyellow;
@@ -32,10 +54,6 @@
       word-spacing: 18px; */
     animation: letterSpacing 4s 0s both infinite alternate;
   }
-
-  
- 
-  
   @keyframes letterSpacing {
     from {
       letter-spacing: 1px;
@@ -55,6 +73,7 @@
   }
 
 
+  /* landing form  css */
   .form-heading{
     text-align: center;
     margin: 30px 0;
@@ -74,6 +93,17 @@
     flex-direction: column;
     
 }
+.input-box input,.input-box select{
+  padding: 5px 7px;
+  width: 100%;
+  margin: 5px 0;
+  outline: none;
+  font-size: 1.1rem;
+  border: none;
+  border-bottom: 2px solid black;
+}
+
+/* landing page css*/
 .home{
     display: flex;
     flex-direction: column;
@@ -84,6 +114,7 @@
     background-color: white;
 
 }
+
 .btn-box{
   display: flex;
   padding: 4px;
@@ -109,15 +140,7 @@
 .quote{
   margin-top: 30px;
 }
-.input-box input,.input-box select{
-    padding: 5px 7px;
-    width: 100%;
-    margin: 5px 0;
-    outline: none;
-    font-size: 1.1rem;
-    border: none;
-    border-bottom: 2px solid black;
-}
+
 
 .footer{
     display: flex;
