@@ -17,6 +17,9 @@ html(lang="en")
                         a(href="/clubs") Home 
                     li
                         a(href="/clubs/my") My Clubs 
+                    if user.role == "Teacher" 
+                        li
+                            a(href="/admin/new") Create Club 
             div.msg=`Welcome ${user.full_name}`
             .dropdown 
                 div.account.drop-btn 
@@ -30,19 +33,21 @@ html(lang="en")
             h1 MITAOE Club Home Page
         main 
             .club-container 
-                if club.length != 0
-                    h1.no-club No clubs found
+                if clubs.length == 0
+                    h1.no-club No club found
                 else 
-                    div.club-card 
-                        img.club-photo(src="https://mitaoe.ac.in/assets/images/campus8.jpg")
-                        div.club-content
-                            div.club-name Mozilla Club 
-                            div.club-desc description 
-                            div.info 
-                                div.member 37 member
-                                div.next-event 23/03/2022
-                        a(class="btn btn-join")
-                            | Join
+                    each club,i in clubs
+                        div.club-card 
+                            img.club-photo(src="https://mitaoe.ac.in/assets/images/campus8.jpg")
+                            div.club-content
+                                div.club-name= club.club_name 
+                                div.club-desc= club.about 
+                                div.info 
+                                    div.member pp
+                                    div.next-event No events
+                                    div= club.tag
+                            a(class="btn btn-join")
+                                | Join
                 
 
         footer.footer

@@ -22,3 +22,12 @@ exports.isAuthenticatd = async(req,res,next)=>{
     }
     
 }
+exports.isFaculty = async (req,res,next)=>{
+    const user = req.user;
+    if(user.role == "Teacher"){
+        next();
+    }
+    else{
+        res.redirect('/clubs')
+    }
+}

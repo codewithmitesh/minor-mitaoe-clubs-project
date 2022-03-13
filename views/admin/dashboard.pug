@@ -1,0 +1,83 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title MITAOE | Club Page
+        style 
+            include ./../../public/css/club.css
+            include ./../../public/util.css
+    body 
+        header.header 
+            img(src="Logo.png", alt="Logo" class="logo")
+            nav 
+                ul 
+                    li 
+                        a(href="/clubs") Home 
+                    li
+                        a(href="/clubs/my") My Clubs
+                    if user.role == "Teacher" 
+                        li
+                            a(href="/admin/new") Create Club 
+            div.msg=`Welcome ${user.full_name}`
+            .dropdown 
+                div.account.drop-btn 
+                div.dropdown-content 
+                    a.dropdown-item(href="account") Account 
+                    a.dropdown-item(href="account/setting") Setting 
+                    a.dropdown-item(href="/logout") Logout 
+                    if user.role == "Teacher"
+                        a.dropdown-item(href="/admin") Administration 
+        section.head
+            h1 Administrator Dashboard
+        main 
+            .club-admin-container 
+                div.admin-head
+                    div.head-item=`User Count: ${userCount}`
+                    div.head-item=`Club Count: ${clubCount}`
+                h1 Users
+                div.user-table 
+                    table 
+                        tr
+                            th Sr. No.
+                            th User Name 
+                            th User Email 
+                            th Study Year 
+                            th Department
+                            th User Role
+                            th Created On
+                            th Edit 
+                            th Delete
+                        each User,i in users
+                            tr 
+                                td= i+1
+                                td= User.full_name  
+                                td= User.email 
+                                td= User.study_year 
+                                td= User.department
+                                td= User.role
+                                td= User.createdAt.toLocaleString()
+                                td Edit 
+                                td Delete
+                h1 Clubs
+                div.club-table 
+                    table 
+                        tr
+                            th Sr. No.
+                            th Club Name
+                            th Club Admin 
+                            th Edit 
+                            th Delete
+                        each Club,i in clubs
+                            tr 
+                                td= i+1
+                                td= Club.club_name
+                                td= admins[i]
+                                td Edit 
+                                td Delete
+
+                
+
+        footer.footer
+            h3 Copyright &copy; MITAOE
