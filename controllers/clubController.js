@@ -11,8 +11,8 @@ exports.index = async(req,res)=>{
 
 exports.getOneClub = async (req,res)=>{
     try {
-        const club = await Club.findOne({_id:req.params.id})
-        res.json({
+        const club = await Club.findOne({slug:req.params.id})
+        res.render('clubs/view',{
             success:true,
             club:club,
             user:req.user
@@ -28,7 +28,15 @@ exports.getOneClub = async (req,res)=>{
 exports.myClubs = async (req,res)=>{
     
     res.json({
-        success:req.user,
-        
+        success:true,
+        user:req.user
     })
 }
+
+/* 
+---club admin routes --- 
+edit club page, 
+create team,
+create event page
+
+*/

@@ -11,6 +11,9 @@
     justify-content: center;
     align-items: center;
 }
+.head h1{
+    color: white;
+}
 
 /*main clubs/index*/
 
@@ -101,8 +104,6 @@ table {
     text-align: left;
     padding: 8px;
   }
- 
-  
  
 .club-admin-container{
     margin: 17px 15px;

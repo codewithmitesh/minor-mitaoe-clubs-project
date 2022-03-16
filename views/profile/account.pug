@@ -25,8 +25,8 @@ html(lang="en")
             .dropdown 
                 div.account.drop-btn 
                 div.dropdown-content 
-                    a.dropdown-item(href="account") Account 
-                    a.dropdown-item(href="account/setting") Setting 
+                    a.dropdown-item(href="/users/account") Account 
+                    a.dropdown-item(href="/users/account/setting") Setting 
                     a.dropdown-item(href="/logout") Logout 
                     if user.role == "Teacher"
                         a.dropdown-item(href="/admin") Administration 
@@ -51,7 +51,7 @@ html(lang="en")
                                 input(type="number" name="mobile_number" placeholder="Enter your Phone Number" required value=`${user.mobile_number}`) 
                             div.input-box
                                 label(for="m_no") 
-                                select(name="study_year")
+                                select(name="study_year" required)
                                     option(value) -------------Select Study Year-------------  
                                     option(value="First Year") First year  
                                     option(value="Second Year") Second year  
@@ -60,7 +60,7 @@ html(lang="en")
                                     option(value="Pass Out") Pass Out  
                             div.input-box
                                 label(for="m_no") 
-                                select(name="department")
+                                select(name="department" required)
                                     option(value) -------------Select Department------------  
                                     option(value="Computer Department") Computer Department   
                                     option(value="Mechanical Department") Mechanical Department   
@@ -72,16 +72,16 @@ html(lang="en")
                                 textarea(type="text" name="about" required value=`${user.about}`)= user.about 
                             div.input-box
                                 label(for="instagram_url")
-                                input(type="text" name="instagram_url" required value=`${user.instagram_url}` placeholder="Instagram Url") 
+                                input(type="text" name="instagram_url" value=`${user.instagram_url}` placeholder="Instagram Url") 
                             div.input-box
                                 label(for="facebook_url")
-                                input(type="text" name="facebook_url" required value=`${user.facebook_url}` placeholder="Facebook Url") 
+                                input(type="text" name="facebook_url" value=`${user.facebook_url}` placeholder="Facebook Url") 
                             div.input-box
                                 label(for="linkedin_url")
-                                input(type="text" name="linkedin_url" required value=`${user.linkedin_url}` placeholder="LinkedIn Url") 
+                                input(type="text" name="linkedin_url" value=`${user.linkedin_url}` placeholder="LinkedIn Url") 
                             div.input-box
                                 label(for="twitter_url")
-                                input(type="text" name="twitter_url" required value=`${user.twitter_url}` placeholder="Twitter Url") 
+                                input(type="text" name="twitter_url" value=`${user.twitter_url}` placeholder="Twitter Url") 
                             
                             div.input-box
                                 button(type="submit" class="btn btn-signup") Update Profile

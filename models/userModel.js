@@ -9,28 +9,30 @@ const userSchema = new mongoose.Schema({
     },
     email:{
         type:String,
+        lowercase:true,
         required:[true,"Please Provide an email"],
-        unique:true,
+        unique:[true,"Email Already exist"],
         validate:{
             validator: function(el){
-                return el.endsWith('@mitaoe.ac.in')
+                return el.endsWith('mitaoe.ac.in') || el.endsWith('maepune.ac.in') 
         }
     }
     },
     mobile_number:{
         type:Number,
         required:[true,"Please provide mobile number"],
-        unique:true,
+        unique:[true,"Mobile number already exist"],
         minlength:[10,"Mobile number should be of 10 digits"]
     },
     prn:{
         type:String,
         required:[true,"Please provide prn number"], 
-        unique:true
+        unique:[true,"PRN number already exist"],
+        minlength:[10,"PRN should be of 10 digits"]
     },
     study_year:{
         type:String,
-        enum:["First Year","Second Year","Third Year","Fourth Year","Pass out"],
+        enum:["First Year","Second Year","Third Year","Fourth Year","Pass Out"],
         required:[true,"Please provid your study year"]
     },
     department:{
@@ -51,6 +53,7 @@ const userSchema = new mongoose.Schema({
     },
     createdAt:{
         type:Date,
+        immutable:true,
         default:Date.now()
     },
     myclubs:[
@@ -97,6 +100,8 @@ userSchema.pre('save',async function(next){
     }
     next()
 })
+
+
 userSchema.methods.matchPassword = async function(password){
     return await bcrypt.compare(password,this.password)
 }

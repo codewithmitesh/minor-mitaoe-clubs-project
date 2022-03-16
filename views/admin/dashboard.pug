@@ -25,8 +25,8 @@ html(lang="en")
             .dropdown 
                 div.account.drop-btn 
                 div.dropdown-content 
-                    a.dropdown-item(href="users/account") Account 
-                    a.dropdown-item(href="users/account/setting") Setting 
+                    a.dropdown-item(href="/users/account") Account 
+                    a.dropdown-item(href="/users/account/setting") Setting 
                     a.dropdown-item(href="/logout") Logout 
                     if user.role == "Teacher"
                         a.dropdown-item(href="/admin") Administration 
@@ -52,7 +52,12 @@ html(lang="en")
                             th Delete
                         each User,i in users
                             tr 
-                                td= i+1
+                                td
+                                    if User.email == user.email
+                                        div= `${i+1} `
+                                            div.btn.btn-you You
+                                    else    
+                                        = `${i+1}`
                                 td= User.full_name  
                                 td= User.email 
                                 td= User.study_year 
@@ -61,12 +66,13 @@ html(lang="en")
                                 td= User.createdAt.toLocaleString("en-IN")
                                 td  
                                     form(action=`admin/${User._id}` method="POST")
-                                        button(type="submit" class="btn btn-edit") 
                                             if User.role == "Student"
-                                                | Make Admin
+                                                button(type="submit" class="btn btn-make-admin") Make Admin
                                             else 
-                                                | Make Member  
-                                td Delete
+                                                button(type="submit" class="btn btn-make-member")  Make Member  
+                                td 
+                                    form(action=`admin/${User._id}?_method=DELETE` method="POST")
+                                        button(type="submit" class="btn btn-delete-user") Delete User
                 h1 Clubs
                 div.club-table 
                     table 
@@ -82,7 +88,9 @@ html(lang="en")
                                 td= Club.club_name
                                 td= admins[i]
                                 td= Club.createdAt.toLocaleString("en-IN")
-                                td Delete
+                                td 
+                                    form(action=`admin/club/${Club._id}?_method=DELETE` method="POST")
+                                        button(type="submit" class="btn btn-delete-user") Delete Club
 
                 
 

@@ -1,17 +1,17 @@
 const User = require('../models/userModel')
+const bcrypt = require('bcrypt')
 
 
-
-exports.account = async(req,res)=>{
+exports.account = async(req,res)=>{  // get 
     res.render('profile/account',{
         success:true,
         user:req.user
     })
 }
-exports.updateAccount = async (req,res)=>{
+exports.updateAccount = async (req,res)=>{  // post 
     try {
         const user = await User.updateOne({_id:req.user._id},req.body)
-        console.log(user);
+  
         res.redirect('/users/account')
     } catch (error) {
         res.json({
@@ -19,4 +19,48 @@ exports.updateAccount = async (req,res)=>{
             message:error.message
         })
     }
+
+    // update password
 }
+
+exports.setting = (req,res)=>{
+    res.render('profile/setting',{ 
+        success:true,
+        user:req.user,
+        done:false,
+        message:""
+    })
+}
+
+exports.updatePassword = async (req,res)=>{
+    try {
+        if(req.body.password.length < 8){
+            return res.render('profile/setting',{ 
+                success:false,
+                user:req.user,
+                done:false,
+                message:"Password must be of length 8"
+            })
+        }
+        let pass = await bcrypt.hash(req.body.password,8);
+        const user = await User.updateOne({_id:req.user._id},{password:pass})
+        // const user = await User.findOne({_id:req.user._id}).select('+password')
+        // user.password = req.body.password;
+        // user.save();
+        
+        res.render('profile/setting',{ 
+            success:true,
+            user:req.user,
+            done:true,
+            message:""
+        })
+    } catch (error) {
+        res.json({
+            success:false,
+            message:error.message 
+        })
+    }
+    
+}
+
+// delete account

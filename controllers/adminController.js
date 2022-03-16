@@ -1,13 +1,15 @@
 const User = require('../models/userModel');
 const Club = require('../models/clubModel');
-const res = require('express/lib/response');
+
 exports.adminDashboard = async(req,res)=>{  // get
     let users = await User.find();
     let clubs = await Club.find();
     let admins = [];
     for(let i=0;i<clubs.length;i++){
         let admin = await User.findOne({_id:clubs[i].admin})
-        admins[i] = admin.full_name + " ("+ admin.email+")";
+        admins[i] = admin.full_name + " (" + admin.email+")";
+        // admins[i] = admin.full_name 
+        // console.log(admin);
     }
     res.render('admin/dashboard',{
         userCount:users.length,
@@ -45,7 +47,7 @@ exports.createClub = async (req,res)=>{  // post
     }
 }
 
-exports.makeAdmin = async (req,res)=>{
+exports.makeAdmin = async (req,res)=>{  // post
     let user = await User.findById({_id:req.params.id})
     if(user.role == "Student")
         user = await User.updateOne({_id:req.params.id},{role:"Teacher"})
@@ -53,3 +55,19 @@ exports.makeAdmin = async (req,res)=>{
         user = await User.updateOne({_id:req.params.id},{role:"Student"})
     res.redirect('/admin')
 }
+
+exports.deleteUser = async (req,res)=>{
+    const user = await User.deleteOne({_id:req.params.id})
+    res.redirect('/admin')
+}
+
+exports.deleteClub = async (req,res)=>{
+    const club = await Club.deleteOne({_id:req.params.id})
+    res.redirect('/admin')
+}
+
+/**
+ * 
+ * edit club admin
+ * delete club
+ */

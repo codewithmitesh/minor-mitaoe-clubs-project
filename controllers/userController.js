@@ -80,3 +80,11 @@ exports.logout = (req,res)=>{
     res.clearCookie('token');
     res.redirect("/login")
 }
+
+/*
+view profile - public for all authenticated users
+
+join/leave club // also add in array of club members
+join/leave event // 
+
+*/

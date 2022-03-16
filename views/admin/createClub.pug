@@ -25,8 +25,8 @@ html(lang="en")
             .dropdown 
                 div.account.drop-btn 
                 div.dropdown-content 
-                    a.dropdown-item(href="users/account") Account 
-                    a.dropdown-item(href="users/account/setting") Setting 
+                    a.dropdown-item(href="/users/account") Account 
+                    a.dropdown-item(href="/users/account/setting") Setting 
                     a.dropdown-item(href="/logout") Logout 
                     if user.role == "Teacher"
                         a.dropdown-item(href="/admin") Administration 

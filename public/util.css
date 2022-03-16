@@ -35,6 +35,28 @@
     width: 80%;
     margin: 0 auto;
 }
-.btn-edit{
-    background-color: aqua;
+.btn-make-admin{
+    background-color: rgb(42, 252, 77);
+    width: 110px;
+    padding: 6px 2px;
+}
+.btn-make-member{
+    background-color: rgb(241, 164, 62);
+    color: white;
+    width: 110px;
+    padding: 6px 2px;
+}
+.btn-delete-user{
+    background-color: red;
+    color: white;
+    width: 110px;
+    padding: 6px 2px;
+}
+
+.btn-you{
+    padding: 2px 2px;
+    width: fit-content;
+    color: white;
+    font-weight: bold;
+    background-color: blue;
 }

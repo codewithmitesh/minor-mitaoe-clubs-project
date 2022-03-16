@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const slugify = require('slugify')
 
 const clubSchema = new mongoose.Schema({
     club_name: {
@@ -48,7 +49,17 @@ const clubSchema = new mongoose.Schema({
     tag: {
         type: String,
         enum: ["Technical", "Non Technical", "Cultural", "Sports"]
+    },
+    slug:{
+        type:String,
+        lowercase:true,
+        unique:true,
     }
+})
+
+clubSchema.pre('save', async function(next){
+    this.slug = slugify(this.club_name)
+    next();
 })
 
 const Club = mongoose.model('Club', clubSchema);
