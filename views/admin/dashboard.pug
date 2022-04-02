@@ -58,7 +58,8 @@ html(lang="en")
                                             div.btn.btn-you You
                                     else    
                                         = `${i+1}`
-                                td= User.full_name  
+                                td
+                                    a(href=`users/${User.prn}` target="_blank")= User.full_name  
                                 td= User.email 
                                 td= User.study_year 
                                 td= User.department

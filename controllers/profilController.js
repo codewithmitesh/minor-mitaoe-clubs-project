@@ -1,6 +1,14 @@
 const User = require('../models/userModel')
 const bcrypt = require('bcrypt')
+const { findOne } = require('../models/userModel')
 
+exports.profileView = async(req,res)=>{
+    const user = await User.findOne({prn:req.params.prn});
+    res.render('profile/view',{
+        success:true,
+        user:user
+    })
+}
 
 exports.account = async(req,res)=>{  // get 
     res.render('profile/account',{
@@ -23,7 +31,7 @@ exports.updateAccount = async (req,res)=>{  // post
     // update password
 }
 
-exports.setting = (req,res)=>{
+exports.setting = (req,res)=>{  // change password // get
     res.render('profile/setting',{ 
         success:true,
         user:req.user,
@@ -32,7 +40,7 @@ exports.setting = (req,res)=>{
     })
 }
 
-exports.updatePassword = async (req,res)=>{
+exports.updatePassword = async (req,res)=>{  // put
     try {
         if(req.body.password.length < 8){
             return res.render('profile/setting',{ 

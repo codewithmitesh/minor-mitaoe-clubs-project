@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/userModel')
 
+// checks whether user is logged in or not
 exports.isAuthenticatd = async(req,res,next)=>{
     try{
         const {token} =req.cookies;
@@ -22,6 +23,8 @@ exports.isAuthenticatd = async(req,res,next)=>{
     }
     
 }
+
+// checks whether user is admin or not
 exports.isFaculty = async (req,res,next)=>{
     const user = req.user;
     if(user.role == "Teacher"){

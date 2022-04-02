@@ -13,7 +13,7 @@ exports.adminDashboard = async(req,res)=>{  // get
     }
     res.render('admin/dashboard',{
         userCount:users.length,
-        clubCount:clubs.length,
+        clubCount:clubs.length, 
         clubs:clubs,
         users:users,
         user:req.user,
