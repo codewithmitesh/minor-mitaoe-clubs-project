@@ -2,7 +2,7 @@ const User = require('../models/userModel')
 const bcrypt = require('bcrypt')
 const { findOne } = require('../models/userModel')
 
-exports.profileView = async(req,res)=>{
+exports.profileView = async(req,res)=>{  // get
     const user = await User.findOne({prn:req.params.prn});
     res.render('profile/view',{
         success:true,
@@ -11,6 +11,7 @@ exports.profileView = async(req,res)=>{
 }
 
 exports.account = async(req,res)=>{  // get 
+    // console.log(req.user);
     res.render('profile/account',{
         success:true,
         user:req.user
@@ -71,4 +72,4 @@ exports.updatePassword = async (req,res)=>{  // put
     
 }
 
-// delete account
+// delete account  not implementing

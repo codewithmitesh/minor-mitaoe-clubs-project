@@ -5,9 +5,16 @@ exports.adminDashboard = async(req,res)=>{  // get
     let users = await User.find();
     let clubs = await Club.find();
     let admins = [];
+    let faculties = [];
     for(let i=0;i<clubs.length;i++){
         let admin = await User.findOne({_id:clubs[i].admin})
         admins[i] = admin.full_name + " (" + admin.email+")";
+        // admins[i] = admin.full_name 
+        // console.log(admin);
+    }
+    for(let i=0;i<clubs.length;i++){
+        let faculty = await User.findOne({_id:clubs[i].facultyCoordinator})
+        faculties[i] = faculty.full_name + " (" + faculty.email+")";
         // admins[i] = admin.full_name 
         // console.log(admin);
     }
@@ -17,7 +24,8 @@ exports.adminDashboard = async(req,res)=>{  // get
         clubs:clubs,
         users:users,
         user:req.user,
-        admins:admins
+        admins:admins,
+        faculties:faculties
     })
 }
 
@@ -31,12 +39,14 @@ exports.createClubForm = async(req,res)=>{   // get
 
 exports.createClub = async (req,res)=>{  // post
     try{
+
         let club = await Club.create({
             club_name:req.body.club_name,
             about:req.body.about,
             admin:req.body.admin,
             location:req.body.location,
-            tag:req.body.tag
+            tag:req.body.tag,
+            facultyCoordinator:req.user._id
         }) 
         res.redirect('/clubs')
     }catch(err){

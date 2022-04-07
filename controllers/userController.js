@@ -1,7 +1,7 @@
 
 const User = require('../models/userModel')
 
-exports.signup = async (req,res)=>{
+exports.signup = async (req,res)=>{  // creating new account
     try{
         let user = await User.find({email:req.body.email})
         if(user == []){
@@ -41,7 +41,7 @@ exports.signup = async (req,res)=>{
     }
 }
 
-exports.login = async(req,res)=>{
+exports.login = async(req,res)=>{   // signing in existing account/user
     try{
         const {email,password} = req.body;
         const user = await User.findOne({email}).select("+password")

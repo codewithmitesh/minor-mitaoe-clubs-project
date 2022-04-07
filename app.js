@@ -22,7 +22,7 @@ app.use(cookieParser())
 app.use(methodOverride('_method'))
 
 app.use('/', landingRouter)
-app.use('/clubs', auth.isAuthenticatd, clubRouter)
+app.use('/clubs', auth.isAuthenticatd, clubRouter);
 app.use('/admin', auth.isAuthenticatd, auth.isFaculty, adminRouter)
 app.use('/users', auth.isAuthenticatd, profileRouter)
 

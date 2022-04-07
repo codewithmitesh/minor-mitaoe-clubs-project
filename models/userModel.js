@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
     },
     department:{
         type:String,
-        enum:["Computer Department","Mechanical Department","Electronics Department","Civil Department","Chemical Department"],
+        enum:["Computer Department","Mechanical Department","Electronics Department","Civil Department","Chemical Department","Design"],
         required:[true,"Please provid your department"]
     },
     role:{
@@ -48,7 +48,7 @@ const userSchema = new mongoose.Schema({
     password:{
         type:String,
         select:false,
-        minlength:[8,"Password should be greater than 8 character"],
+        minlength:[6,"Password should be greater than 6 character"],
         required:[true,"Please provid your password"]
     },
     createdAt:{
@@ -64,7 +64,7 @@ const userSchema = new mongoose.Schema({
     ],
     myevents:[
         {
-            type: mongoose.Schema.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId, 
             ref:"Event"
         }
     ],
@@ -98,7 +98,7 @@ userSchema.pre('save',async function(next){
     if(this.isModified('password')){
         this.password = await bcrypt.hash(this.password,8)
     }
-    next()
+    next();
 })
 
 

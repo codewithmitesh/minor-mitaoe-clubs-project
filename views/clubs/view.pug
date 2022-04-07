@@ -35,6 +35,15 @@ html(lang="en")
         main 
             .club-container 
                 div= club.about
+                div= club.club_name
+                hr
+                div= facultyCoordinator 
+                hr
+                div= studentCoordinator
+                if studentCoordinator == user.full_name 
+                    a(href=`edit/${club.slug}`) Edit Club Page
+                    a(href=`teams/new/${club.slug}`) Create new Team
+                    a(href=`events/new/${club.slug}`) Create new Event
                 
 
         footer.footer

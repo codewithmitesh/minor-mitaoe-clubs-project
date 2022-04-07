@@ -53,20 +53,72 @@ html(lang="en")
                                 label(for="m_no") 
                                 select(name="study_year" required)
                                     option(value) -------------Select Study Year-------------  
-                                    option(value="First Year") First year  
-                                    option(value="Second Year") Second year  
-                                    option(value="Third Year") Third year  
-                                    option(value="Fourth Year") Fourth year  
-                                    option(value="Pass Out") Pass Out  
+                                    if user.study_year == "First Year"
+                                        option(value="First Year" selected) First year 
+                                        option(value="Second Year") Second year  
+                                        option(value="Third Year") Third year  
+                                        option(value="Fourth Year") Fourth year  
+                                        option(value="Pass Out") Pass Out  
+                                    else if user.study_year == "Second Year" 
+                                        option(value="First Year" ) First year 
+                                        option(value="Second Year" selected) Second year  
+                                        option(value="Third Year") Third year  
+                                        option(value="Fourth Year") Fourth year  
+                                        option(value="Pass Out") Pass Out 
+                                    else if user.study_year == "Third Year"
+                                        option(value="First Year" ) First year 
+                                        option(value="Second Year" ) Second year  
+                                        option(value="Third Year" selected) Third year  
+                                        option(value="Fourth Year") Fourth year  
+                                        option(value="Pass Out") Pass Out 
+                                    else if user.study_year == "Fourth Year"
+                                        option(value="First Year" ) First year 
+                                        option(value="Second Year" ) Second year  
+                                        option(value="Third Year") Third year  
+                                        option(value="Fourth Year" selected) Fourth year  
+                                        option(value="Pass Out") Pass Out 
+                                    else if user.study_year == "Pass Out"
+                                        option(value="First Year" ) First year 
+                                        option(value="Second Year" ) Second year  
+                                        option(value="Third Year") Third year  
+                                        option(value="Fourth Year") Fourth year  
+                                        option(value="Pass Out" selected) Pass Out 
+                                    
+                                     
                             div.input-box
                                 label(for="m_no") 
                                 select(name="department" required)
                                     option(value) -------------Select Department------------  
-                                    option(value="Computer Department") Computer Department   
-                                    option(value="Mechanical Department") Mechanical Department   
-                                    option(value="Electronics Department") Electronics Department   
-                                    option(value="Civil Department") Civil Department   
-                                    option(value="Chemical Department") Chemical Department   
+                                    if user.department == "Computer Department"
+                                        option(value="Computer Department" selected) Computer Department   
+                                        option(value="Mechanical Department") Mechanical Department   
+                                        option(value="Electronics Department") Electronics Department   
+                                        option(value="Civil Department") Civil Department   
+                                        option(value="Chemical Department") Chemical Department   
+                                    else if user.department == "Mechanical Department"
+                                        option(value="Computer Department" ) Computer Department   
+                                        option(value="Mechanical Department" selected) Mechanical Department   
+                                        option(value="Electronics Department") Electronics Department   
+                                        option(value="Civil Department") Civil Department   
+                                        option(value="Chemical Department") Chemical Department   
+                                    else if user.department == "Electronics Department"
+                                        option(value="Computer Department" ) Computer Department   
+                                        option(value="Mechanical Department") Mechanical Department   
+                                        option(value="Electronics Department" selected) Electronics Department   
+                                        option(value="Civil Department") Civil Department   
+                                        option(value="Chemical Department") Chemical Department   
+                                    else if user.department == "Civil Department"
+                                        option(value="Computer Department" ) Computer Department   
+                                        option(value="Mechanical Department") Mechanical Department   
+                                        option(value="Electronics Department") Electronics Department   
+                                        option(value="Civil Department" selected) Civil Department   
+                                        option(value="Chemical Department") Chemical Department   
+                                    else if user.department == "Chemical Department"
+                                        option(value="Computer Department" ) Computer Department   
+                                        option(value="Mechanical Department") Mechanical Department   
+                                        option(value="Electronics Department") Electronics Department   
+                                        option(value="Civil Department") Civil Department   
+                                        option(value="Chemical Department" selected) Chemical Department   
                             div.input-box
                                 label(for="about") Bio
                                 textarea(type="text" name="about" required value=`${user.about}`)= user.about 

@@ -6,13 +6,18 @@ exports.isAuthenticatd = async(req,res,next)=>{
     try{
         const {token} =req.cookies;
     if(!token){
-        return res.json({
-            message:"Please login"
-        })
+        // return res.json({
+        //     message:"Please login"
+        // })
+        return res.redirect('/'); 
     }
     const decoded = await jwt.verify(token,process.env.JWT_SECRET)
 
-    req.user = await User.findById(decoded._id)
+    const newUser = await User.findById(decoded._id);
+    if(!newUser){
+        return res.redirect('/login');
+    }
+    req.user = newUser;
     next()
     }catch(err){
         // res.json({
@@ -34,3 +39,4 @@ exports.isFaculty = async (req,res,next)=>{
         res.redirect('/clubs')
     }
 }
+

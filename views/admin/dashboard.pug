@@ -80,7 +80,8 @@ html(lang="en")
                         tr
                             th Sr. No.
                             th Club Name
-                            th Club Admin 
+                            th Student Coordinator 
+                            th Faculty Coordinator 
                             th Created At
                             th Delete
                         each Club,i in clubs
@@ -88,6 +89,7 @@ html(lang="en")
                                 td= i+1
                                 td= Club.club_name
                                 td= admins[i]
+                                td= faculties[i]
                                 td= Club.createdAt.toLocaleString("en-IN")
                                 td 
                                     form(action=`admin/club/${Club._id}?_method=DELETE` method="POST")

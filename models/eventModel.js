@@ -13,10 +13,13 @@ const eventSchema = new mongoose.Schema({
         type:Date,
         required:true
     },
-    venue:{
+    venue:{ 
         type:String,
-        max:25,
         required:true
+    },
+    venuLink:{
+        type:String,
+
     },
     time:{
         type:Date,

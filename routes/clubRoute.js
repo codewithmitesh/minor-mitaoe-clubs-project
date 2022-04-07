@@ -9,10 +9,20 @@ const router = express.Router()
 //         club:[]
 //     })
 // })
-router.get('/',clubController.index)
-router.get('/my',clubController.myClubs)
+router.get('/',clubController.index)  // home page
 
-router.get('/:id',clubController.getOneClub)
+router.get('/my',clubController.myClubs) // not implemented
+
+router.get('/:id',clubController.getOneClub);
+router.get('/edit/:id',clubController.getEditClubPage);  // id == slug
+
+router.get('/teams/new/:id',clubController.getCreateTeamPage)
+router.get('/events/new/:id',clubController.getCreateEventPage)
+
+// router.post('/edit/:id')
+
+
+router.post('/join/:id')
 
 
 /*
