@@ -6,7 +6,8 @@ exports.profileView = async(req,res)=>{  // get
     const user = await User.findOne({prn:req.params.prn});
     res.render('profile/view',{
         success:true,
-        user:user
+        User:user,
+        user:req.user
     })
 }
 

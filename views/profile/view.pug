@@ -31,11 +31,11 @@ html(lang="en")
                     if user.role == "Teacher"
                         a.dropdown-item(href="/admin") Administration 
         section.head
-            h1= user.full_name 
+            h1= User.full_name 
         main 
             .container 
                 .form-box 
-                    .form-heading= user.full_name + "'s Account"
+                    .form-heading= User.full_name + "'s Account"
 
            
                 
