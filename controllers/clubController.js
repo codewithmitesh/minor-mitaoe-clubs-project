@@ -91,6 +91,8 @@ exports.getCreateTeamPage = async (req,res)=>{
     }
     res.redirect('/clubs');
 }
+
+
 exports.getCreateEventPage = async (req,res)=>{
     let club = await Club.findOne({slug:req.params.id});
     let admin_id = await User.findOne({_id:club.admin});

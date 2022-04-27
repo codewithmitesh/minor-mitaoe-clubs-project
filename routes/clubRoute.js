@@ -14,6 +14,9 @@ router.get('/',clubController.index)  // home page
 router.get('/my',clubController.myClubs) // not implemented
 
 router.get('/:id',clubController.getOneClub);
+
+
+/// student admin routes
 router.get('/edit/:id',clubController.getEditClubPage);  // id == slug
 
 router.get('/teams/new/:id',clubController.getCreateTeamPage)

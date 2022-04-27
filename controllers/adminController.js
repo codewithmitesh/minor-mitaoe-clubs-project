@@ -66,7 +66,7 @@ exports.makeAdmin = async (req,res)=>{  // post
     res.redirect('/admin')
 }
 
-exports.deleteUser = async (req,res)=>{
+exports.deleteUser = async (req,res)=>{   // post
     const user = await User.deleteOne({_id:req.params.id})
     res.redirect('/admin')
 }
