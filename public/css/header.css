@@ -71,8 +71,9 @@ nav ul li a:hover{
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    background: url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png');
-    background-size: cover;
+    /* background: url('/public/assets/avatar/1.png');
+    background-repeat: no-repeat;
+    background-size: contain; */
 }
 .dropdown{
     position: relative;
