@@ -23,7 +23,10 @@ html(lang="en")
                             a(href="/admin/new") Create Club 
             div.msg=`Welcome ${user.full_name}`
             .dropdown 
-                img(src="../assets/avatar/1.png", alt="Profile Avatar" class="account")
+                if user.profile_pic == ""
+                    img(src=`../assets/avatar/default.png`, alt="Profile Avatar" class="account")
+                else
+                    img(src=`../assets/avatar/${user.profile_pic || "default.png"}`, alt="Profile Avatar" class="account")
                 div.drop-btn                
                 div.dropdown-content 
                     a.dropdown-item(href="/users/account") Account 
