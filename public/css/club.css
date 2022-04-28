@@ -171,5 +171,28 @@ textarea{
     background-color: #dddddd;
 }
 
+.avatar-main{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    display: block;
+    margin: 10px auto;
+    cursor: pointer;
+}
+.avatar{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    /* display: inline; */
+    margin: 10px;
+    cursor: pointer;
+}
 
+.avatar-box{
+    margin: 15px;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.1rem;
+    flex-wrap: wrap;
+}
 

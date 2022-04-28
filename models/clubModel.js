@@ -44,7 +44,8 @@ const clubSchema = new mongoose.Schema({
     instagram_url: {
         type: String
     }
-    , facebook_url: {
+    , 
+    facebook_url: {
         type: String
     },
     linkedin_url: {

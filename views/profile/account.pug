@@ -23,10 +23,10 @@ html(lang="en")
                             a(href="/admin/new") Create Club 
             div.msg=`Welcome ${user.full_name}`
             .dropdown 
-                if user.profile_pic == ""
+                if user.profil_pic == ""
                     img(src=`../assets/avatar/default.png`, alt="Profile Avatar" class="account")
                 else
-                    img(src=`../assets/avatar/${user.profile_pic || "default.png"}`, alt="Profile Avatar" class="account")
+                    img(src=`../assets/avatar/${user.profil_pic || "default.png"}`, alt="Profile Avatar" class="account")
                 div.drop-btn                
                 div.dropdown-content 
                     a.dropdown-item(href="/users/account") Account 
@@ -41,6 +41,20 @@ html(lang="en")
                 .form-box 
                     .form-heading Your Account
                     form(action="/users/account" method="POST")
+                            img(src=`../assets/avatar/${user.profil_pic}`, alt="profile picture" class="avatar-main")
+                            .avatar-box 
+                                img(src="../assets/avatar/1.png", alt="profile picture" class="avatar")
+                                input(type="radio" name="profil_pic" value="1.png")
+                                img(src="../assets/avatar/2.png", alt="profile picture" class="avatar")
+                                input(type="radio" name="profil_pic" value="2.png")
+                                img(src="../assets/avatar/3.png", alt="profile picture" class="avatar")
+                                input(type="radio"  name="profil_pic" value="3.png")
+                                img(src="../assets/avatar/4.png", alt="profile picture" class="avatar")
+                                input(type="radio"  name="profil_pic" value="4.png")
+                                img(src="../assets/avatar/5.png", alt="profile picture" class="avatar")
+                                input(type="radio"  name="profil_pic" value="5.png")
+                                img(src="../assets/avatar/6.png", alt="profile picture" class="avatar")
+                                input(type="radio" name="profil_pic" value="6.png")
                             .input-box 
                                 label(for="full_name")
                                 input(type="text" name="full_name" value=`${user.full_name}`) 
