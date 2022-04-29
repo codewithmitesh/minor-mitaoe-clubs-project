@@ -5,6 +5,8 @@ const methodOverride = require('method-override')
 const app = express();
 
 const auth = require('./middlewares/auth')
+
+
 const landingRouter = require('./routes/landingRoute')
 const clubRouter = require('./routes/clubRoute');
 const adminRouter = require('./routes/adminRoute')

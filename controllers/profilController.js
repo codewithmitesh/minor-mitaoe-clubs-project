@@ -18,8 +18,10 @@ exports.account = async(req,res)=>{  // get
         user:req.user
     })
 }
+
 exports.updateAccount = async (req,res)=>{  // post 
     try {
+        // console.log(req.body);
         const user = await User.updateOne({_id:req.user._id},req.body)
   
         res.redirect('/users/account')
@@ -72,5 +74,7 @@ exports.updatePassword = async (req,res)=>{  // put
     }
     
 }
+
+
 
 // delete account  not implementing
